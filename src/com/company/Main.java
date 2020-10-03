@@ -2,6 +2,7 @@ package com.company;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.function.Supplier;
 import javax.swing.*;
 
 abstract class shape extends JComponent
@@ -31,9 +32,9 @@ abstract class shape extends JComponent
     {
         this.color=randomcolor();
     }
-    public void paint(Graphics g){}
-
+    abstract public void paint(Graphics g);
 }
+
 class rectangle extends shape
 {
     rectangle()
@@ -47,6 +48,7 @@ class rectangle extends shape
         g.fillRect(0, 0,20 , 30);
     }
 }
+
 class square extends rectangle
 {
     square()
@@ -87,15 +89,33 @@ class circle extends oval
 public class Main extends JFrame {
     public Main() {
         super("Figuri");
-        int x1=0;
-        int x2=0;
+        Random r = new Random();
+        int x = 25;
+        int a;
+        ArrayList<shape> arrayList=new ArrayList<>();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLayeredPane lp = getLayeredPane();
-        rectangle one = new rectangle();
-        oval two = new oval();
-        two.setBounds(50, 50, 120, 120);
-        lp.add(one, JLayeredPane.POPUP_LAYER);
-        lp.add(two, JLayeredPane.POPUP_LAYER);
+        for(int i=0; i<20; i++)
+        {
+           a=r.nextInt(4);
+           if(a==0) arrayList.add(new rectangle());
+           if(a==1) arrayList.add(new circle());
+           if(a==2) arrayList.add(new square());
+           if(a==3) arrayList.add(new oval());
+        }
+        for(int i=0; i<10; i++) {
+            arrayList.get(i).setBounds(x, 0, 50, 50);
+            add(arrayList.get(i));
+            x+=25;
+        }
+        x=0;
+        for(int i=10; i<20; i++)
+        {
+            arrayList.get(i).setBounds(x, 40, 50, 50);
+            add(arrayList.get(i));
+            x+=25;
+        }
+        //arrayList.get(1).setBounds(20, 10, 50, 50);
+        //add(arrayList.get(1));
         setSize(280, 250);
         setVisible(true);
     }
