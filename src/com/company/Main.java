@@ -8,6 +8,8 @@ import javax.swing.*;
 abstract class shape extends JComponent
 {
     Random r = new Random();
+    static final long serialVersionUID=1L;
+    Color color;
     public Color randomcolor()
     {
         int a;
@@ -26,8 +28,6 @@ abstract class shape extends JComponent
             return Color.GREEN;
         return Color.GREEN;
     }
-    static final long serialVersionUID=1L;
-    Color color;
     shape()
     {
         this.color=randomcolor();
@@ -37,11 +37,6 @@ abstract class shape extends JComponent
 
 class rectangle extends shape
 {
-    rectangle()
-    {
-        super();
-    }
-
     @Override
     public void paint(Graphics g) {
         g.setColor(randomcolor());
@@ -51,11 +46,6 @@ class rectangle extends shape
 
 class square extends rectangle
 {
-    square()
-    {
-        super();
-    }
-
     @Override
     public void paint(Graphics g) {
         g.setColor(randomcolor());
@@ -65,10 +55,6 @@ class square extends rectangle
 class oval extends  shape
 {
     Random r = new Random();
-    oval() {
-        super();
-    }
-
     @Override
     public void paint(Graphics g) {
         g.setColor(randomcolor());
@@ -77,10 +63,6 @@ class oval extends  shape
 }
 class circle extends oval
 {
-    circle()
-    {
-        super();
-    }
     public void paint(Graphics g) {
         g.setColor(randomcolor());
         g.fillOval(0, 0,20, 20);
@@ -114,8 +96,6 @@ public class Main extends JFrame {
             add(arrayList.get(i));
             x+=25;
         }
-        //arrayList.get(1).setBounds(20, 10, 50, 50);
-        //add(arrayList.get(1));
         setSize(280, 250);
         setVisible(true);
     }
