@@ -8,7 +8,7 @@ public class Kartinka extends JPanel {
     static Image img = new ImageIcon(" ").getImage();
 public static void main(String[] args) {
     args = new String[1];
-    args[0] = "C:/Users/Saint/IdeaProjects/8/c7883ac51fa20bd1c1b700b0d2aa8fe6.jpg";
+    args[0] = "C:/Users/Saint/IdeaProjects/8/1.jpg";
     img = new ImageIcon(args[0]).getImage();
     JFrame one = new JFrame();
     one.setSize(500, 500);
