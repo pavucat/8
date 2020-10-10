@@ -1,89 +1,23 @@
 package com.company;
 import java.awt.*;
-import java.awt.image.BaseMultiResolutionImage;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.function.Supplier;
+import java.util.*;
 import javax.swing.*;
 
-abstract class shape extends JComponent
-{
-    Random r = new Random();
-    static final long serialVersionUID=1L;
-    Color color;
-    public Color randomcolor()
-    {
-        int a;
-        a=r.nextInt(6);
-        if(a==1)
-            return Color.red;
-        if (a==2)
-            return Color.BLACK;
-        if(a==3)
-            return Color.BLUE;
-        if(a==4)
-            return Color.CYAN;
-        if(a==5)
-            return Color.DARK_GRAY;
-        if(a==6)
-            return Color.GREEN;
-        return Color.GREEN;
-    }
-    shape()
-    {
-        this.color=randomcolor();
-    }
-    abstract public void paint(Graphics g);
-}
-
-class rectangle extends shape
-{
-    @Override
-    public void paint(Graphics g) {
-        g.setColor(randomcolor());
-        g.fillRect(0, 0,20 , 30);
-    }
-}
-
-class square extends rectangle
-{
-    @Override
-    public void paint(Graphics g) {
-        g.setColor(randomcolor());
-        g.fillRect(0, 0,20 , 20);
-    }
-}
-class oval extends  shape
-{
-    Random r = new Random();
-    @Override
-    public void paint(Graphics g) {
-        g.setColor(randomcolor());
-        g.fillOval(0, 0,20, 30);
-    }
-}
-class circle extends oval
-{
-    public void paint(Graphics g) {
-        g.setColor(randomcolor());
-        g.fillOval(0, 0,20, 20);
-    }
-}
 public class Main extends JFrame {
     public Main() {
         super("Figuri");
         Random r = new Random();
         int x = 25;
         int a;
-        ArrayList<shape> arrayList=new ArrayList<>();
+        ArrayList<Shape> arrayList=new ArrayList<>();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         for(int i=0; i<20; i++)
         {
            a=r.nextInt(4);
-           if(a==0) arrayList.add(new rectangle());
-           if(a==1) arrayList.add(new circle());
-           if(a==2) arrayList.add(new square());
-           if(a==3) arrayList.add(new oval());
+           if(a==0) arrayList.add(new Rectangle());
+           if(a==1) arrayList.add(new Circle());
+           if(a==2) arrayList.add(new Square());
+           if(a==3) arrayList.add(new Oval());
         }
         for(int i=0; i<10; i++) {
             arrayList.get(i).setBounds(x, 0, 50, 50);
@@ -100,7 +34,6 @@ public class Main extends JFrame {
         setSize(280, 250);
         setVisible(true);
     }
-//////////////////////////////////
     public static void main(String[] args) {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
