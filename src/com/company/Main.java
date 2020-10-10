@@ -1,5 +1,6 @@
 package com.company;
 import java.awt.*;
+import java.awt.image.BaseMultiResolutionImage;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -99,9 +100,11 @@ public class Main extends JFrame {
         setSize(280, 250);
         setVisible(true);
     }
-
+//////////////////////////////////
     public static void main(String[] args) {
+
         JFrame.setDefaultLookAndFeelDecorated(true);
         new Main();
     }
+
 }
